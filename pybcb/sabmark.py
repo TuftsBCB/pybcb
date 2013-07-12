@@ -3,7 +3,7 @@ import os
 import os.path
 import sys
 
-import pybcbgo.flags as flags
+import pybcb.flags as flags
 
 
 __TWILIGHT = 'twi_fp'

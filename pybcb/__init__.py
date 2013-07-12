@@ -9,7 +9,7 @@ import re
 import subprocess
 import sys
 
-import pybcbgo.flags as flags
+import pybcb.flags as flags
 
 __exp_dir = None
 __results_dir = None
@@ -23,7 +23,7 @@ def set_exp_dir(exp_dir):
 
 def __assert_exp_dir():
     if __exp_dir is None:
-        eprintln('Please call "set_exp_dir" before using pybcbgo.')
+        eprintln('Please call "set_exp_dir" before using pybcb.')
         exit(1)
 
 
@@ -36,7 +36,7 @@ def set_results_dir(results_dir):
 
 def __assert_results_dir():
     if __results_dir is None:
-        eprintln('Please call "set_results_dir" before using pybcbgo.')
+        eprintln('Please call "set_results_dir" before using pybcb.')
         exit(1)
 
 
