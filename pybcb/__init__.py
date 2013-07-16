@@ -67,7 +67,6 @@ def exit(n):
 
 def make():
     cmd('make')
-    cmd('make', 'install-exp')
 
 
 def readable(f):
@@ -159,9 +158,13 @@ def cmd(*args, **kwargs):
         veprintln(' '.join(args))
         out = subprocess.check_output(args, **kwargs)
         return out
-    except Exception, e:
+    except subprocess.CalledProcessError, e:
         eprintln('Could not execute command "%s" (exit status: %d)\n\n%s'
                  % (' '.join(args), e.returncode, e.output))
+        exit(1)
+    except OSError, e:
+        eprintln('Could not execute command "%s" (errno %d): %s'
+                 % (' '.join(args), e.errno, e.strerror))
         exit(1)
 
 def pdb_path(pdbid):
