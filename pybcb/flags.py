@@ -132,7 +132,7 @@ __flags = {
     ),
     'frag-lib': (
         aa('--frag-lib', dest='frag_lib', type=str,
-           default='/data/bio/fraglibs/structure-400-11.flib',
+           default='/data/bio/fraglibs/structure-400-11.json',
            help='Path to a structure fragment library.'),
         verify_path,
     ),
