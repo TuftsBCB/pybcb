@@ -228,7 +228,7 @@ def pdbids_to_fasta(pdbids):
                        '--chain', chain, '--separate-chains',
                        '--split', __exp_dir, pdb_file,)
         else:
-            cached_cmd(tglob('%s*.fasta' % pdbid),
+            cached_cmd(eglob('%s*.fasta' % pdbid),
                        'pdb2fasta', '--separate-chains', '--split',
                        __exp_dir, pdb_file)
 
