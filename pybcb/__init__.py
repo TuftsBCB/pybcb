@@ -1,6 +1,5 @@
 from collections import defaultdict
 import csv
-from cStringIO import StringIO
 import glob
 import hashlib
 import os
