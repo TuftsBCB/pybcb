@@ -57,7 +57,7 @@ def eprintln(s):
 
 
 def veprintln(s):
-    if flags.config.verbose:
+    if getattr(flags.config, 'verbose', False):
         eprintln(s)
 
 
