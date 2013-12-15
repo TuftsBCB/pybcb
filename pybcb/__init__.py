@@ -72,6 +72,19 @@ def readable(f):
     return os.access(f, os.R_OK)
 
 
+def flib_name(flib_path):
+    """
+    Queries the fragment library for information about it, and returns
+    a canonical name.
+    """
+    raw = cmd('flib', 'view-lib', flib_path)
+    info = defaultdict(str)
+    for line in raw.splitlines():
+        k, v = map(str.strip, line.split(':', 1))
+        info[k] = v
+    return '%s_%s' % (info['Tag'].replace('/', '_'), info['Name'])
+
+
 def parse_range(s):
     '''
     Takes a range of the form `^(\d+)-(\d+)$` and returns a corresponding
