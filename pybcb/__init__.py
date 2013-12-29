@@ -65,7 +65,7 @@ def exit(n):
 
 
 def make():
-    cmd('make')
+    cmd('make', 'install')
 
 
 def readable(f):
