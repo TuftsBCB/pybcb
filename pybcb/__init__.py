@@ -330,7 +330,7 @@ def mk_bowdb_pdbs(name, pdb_files):
     bowdb = ejoin(name)
 
     cached_cmd([bowdb],
-        'bowmk', '--overwrite', '--cpu', str(flags.config.cpu),
+        'flib', 'mk-bowdb', '--overwrite', '--cpu', str(flags.config.cpu),
         bowdb, flags.config.frag_lib, *pdb_files)
 
 
@@ -341,18 +341,14 @@ def mk_bowdb(name, protein_files):
     bowdb = ejoin(name)
 
     args = [
-       'bowmk',
+       'flib',
+       'mk-bowdb',
        '--overwrite', # let the `cached_cmd` work out the deets
        '--cpu', str(flags.config.cpu),
-       '--seq-db', flags.config.seq_hhm_db,
-       '--pdb-hhm-db', flags.config.pdb_hhm_db,
-       '--hhfrag-inc', str(flags.config.hhfrag_inc),
-       '--hhfrag-min', str(flags.config.hhfrag_min),
-       '--hhfrag-max', str(flags.config.hhfrag_max),
+       bowdb,
+       flags.config.frag_lib,
     ]
-    if not flags.config.blits:
-        args.append('--blits=false')
-    args += [bowdb, flags.config.frag_lib] + protein_files
+    args += protein_files
 
     cached_cmd([bowdb], *args)
 
